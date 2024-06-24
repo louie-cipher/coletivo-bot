@@ -1,0 +1,6 @@
+{
+	"interactionCreate": {
+		"commandNotFound": "Comando não encontrado",
+		"error": "Ocorreu um erro ao executar o comando"
+	}
+}

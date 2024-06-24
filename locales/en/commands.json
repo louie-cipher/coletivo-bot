@@ -1,0 +1,81 @@
+{
+	"ping": {
+		"cmdName": "ping",
+		"cmdDesc": "Ping the bot",
+		"title": "🏓 Pong!",
+		"responseTime": "Bot response time: {{ping}}ms",
+		"apiPing": "Discord API ping: {{ping}}ms"
+	},
+	"send": {
+		"cmdName": "send",
+		"cmdDesc": "Send a message to a channel",
+		"invalid_channel": "Invalid channel. Please provide a valid channel ID or mention a channel",
+		"missing_permissions": "I don't have permission to send messages in that channel",
+		"success": "Message sent successfully. Check it out here: {{message}}",
+		"error": "An error occurred while sending the message",
+		"embed": {
+			"modal_title": "Send an embed",
+			"content": "Content",
+			"content_placeholder": "The text outside the embed (@mentions only work here)",
+			"title": "Title",
+			"title_placeholder": "Type here the title",
+			"description": "Description",
+			"description_placeholder": "Type here the description, the main text",
+			"footer": "Footer",
+			"footer_placeholder": "Texto menor abaixo da descrição",
+			"color": "Color",
+			"color_placeholder": "Sidebar color. In hex (#000000)",
+			"invalid_color": "Invalid color. Please provide a color in hex format (#FFFFFF)",
+			"image": "Image",
+			"image_placeholder": "Image URL. Animated images are also supported"
+		}
+	},
+	"deposit": {
+		"cmdName": "deposit",
+		"cmdDesc": "Deposit coins into the bank",
+		"notEnoughCoins": "You do not have enough {{coinEmoji}} {{coinName}} in your wallet",
+		"success": "Deposit of {{amount}} {{coinEmoji}} {{coinName}} successful",
+		"successTitle": "📥 Deposit Successful 📥",
+		"successDescription": "You have deposited {{amount}} {{coinEmoji}} {{coinName}} into your wallet"
+	},
+	"saque": {
+		"cmdName": "withdraw",
+		"cmdDesc": "Withdraw coins to the wallet",
+		"notEnoughCoins": "You do not have enough {{coinEmoji}} {{coinName}} in the bank",
+		"success": "Withdrawal of {{amount}} {{coinEmoji}} {{coinName}} successful",
+		"successTitle": "📤 Withdrawal Successful 📤",
+		"successDescription": "You have withdrawn {{amount}} {{coinEmoji}} {{coinName}} from the bank"
+	},
+	"daily": {
+		"title": "🕒 Daily Reward",
+		"description": "You have received {{newCoins}} {{coinEmoji}} {{coinName}} as your daily reward.\nYou have a {{dailyCombo}} day streak. Keep it up!",
+		"alreadyClaimed": "You have already claimed your daily reward today. Come back tomorrow for more!"
+	},
+	"rank": {
+		"title": {
+			"chatXP": "Ranking de XP por chat",
+			"voiceXP": "Ranking de XP por voz"
+		},
+		"pageNumber": "Página N° {{pageNumber}}"
+	},
+	"games": {
+		"cantPlayAgainstSelf": "You cannot play against yourself",
+		"cantPlayAgainstBot": "You cannot play against other bots",
+		"notEnoughCoins": "Insufficient wallet balance for this bet",
+		"notEnoughCoinsOpponent": "Your opponent does not have enough balance for this bet"
+	},
+	"ticTacToe": {
+		"cmdName": "tic-tac-toe",
+		"cmdDesc": "Play a game of Tic Tac Toe",
+		"title": "❎ ⭕ | Tic Tac Toe",
+		"turnOf": "Turn of <@{{playerId}}>"
+	},
+	"numberGuess": {
+		"title": "🎲 How to play",
+		"description": "Try to guess my number **between 1 and {{max}}**\nand I will tell you if my number is higher or lower",
+		"lower": "🔽 lower",
+		"higher": "🔼 higher",
+		"win": "🎉 Congratulations! You guessed it!",
+		"attempts": "You guessed it in **{{attempts}}** attempts"
+	}
+}

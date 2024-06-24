@@ -1,0 +1,57 @@
+{
+	"name": "template-bot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "dist/index.js",
+	"_moduleAliases": {
+		"@root": ".",
+		"@": "dist",
+		"client": "dist/client",
+		"db": "dist/db",
+		"utils": "dist/utils",
+		"types": "dist/types",
+		"commands": "dist/commands",
+		"classes": "dist/classes",
+		"locales": "locales",
+		"i18n": "dist/i18n"
+	},
+	"scripts": {
+		"start": "npm run build && npm run node",
+		"node": "cross-env NODE_ENV=prod node dist/index.js",
+		"dev": "cross-env NODE_ENV=dev ts-node src/index.ts",
+		"build": "tsc",
+		"prettier": "prettier --write ."
+	},
+	"keywords": [
+		"discord",
+		"bot",
+		"discord-bot"
+	],
+	"author": "louie-cipher",
+	"license": "MIT",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"dependencies": {
+		"@discordjs/builders": "^1.8.2",
+		"chalk": "^4.1.2",
+		"cross-env": "^7.0.3",
+		"discord.js": "^14.15.3",
+		"dotenv": "^16.4.5",
+		"i18next": "^23.11.5",
+		"i18next-fs-backend": "^2.3.1",
+		"module-alias": "^2.2.3",
+		"moment": "^2.30.1",
+		"pg": "^8.12.0",
+		"sqlite3": "^5.1.7",
+		"tslib": "^2.6.2",
+		"typeorm": "^0.3.20"
+	},
+	"devDependencies": {
+		"@types/module-alias": "^2.0.4",
+		"@types/node": "^20.10.5",
+		"prettier": "^3.3.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3"
+	}
+}

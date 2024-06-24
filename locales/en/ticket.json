@@ -1,0 +1,23 @@
+{
+	"create": {
+		"success": "Ticket criado com sucesso!",
+		"alreadyExists": "Você já possui um ticket aberto. Por favor, aguarde uma resposta antes de abrir outro ticket"
+	},
+	"setup": {
+		"title": "✅ Ticket criado com sucesso",
+		"description": "Agora, configure as perguntas desse ticket usando o comando `/ticket questions <messageId>`, informando o ID dessa mensagem: {{messageId}}",
+		"messageNotFound": "Mensagem **{{messageId}}** não encontrada. Copie o ID de uma mensagem válida",
+		"notBotMessage": "Você deve fornecer o ID de uma mensagem enviada pelo bot",
+		"invalidEmoji": "**Emoji inválido**. Por favor, forneça um único emoji, podendo ser um emoji padrão do discord, ou um emoji personalizado desse servidor",
+		"modChannelMessage": "Esse canal foi configurado como canal de moderação de tickets.\nAs respostas de tickets serão enviadas aqui"
+	},
+	"questions": {
+		"notFound": "A mensagem **{{messageId}}** não possui um ticket associado",
+		"title": "Perguntas registradas com sucesso",
+		"description": "As perguntas do ticket **{{messageId}}** foram registradas com sucesso"
+	},
+	"unblock": {
+		"notFound": "Nenhum ticket encontrado para <@{{user}}>",
+		"success": "Bloqueio de ticket removido com sucesso para <@{{user}}>"
+	}
+}

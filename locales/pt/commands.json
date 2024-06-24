@@ -1,0 +1,84 @@
+{
+	"ping": {
+		"cmdName": "ping",
+		"cmdDesc": "Exibe o ping do bot",
+		"title": "Pong! 🏓",
+		"responseTime": "Tempo de resposta do bot: {{ping}}ms",
+		"apiPing": "Ping da API do Discord: {{ping}}ms"
+	},
+	"send": {
+		"cmdName": "send",
+		"cmdDesc": "Envia uma mensagem",
+		"invalid_channel": "Canal inválido. Por favor, forneça um canal que possua chat de texto",
+		"missing_permissions": "Eu não tenho permissão para enviar mensagens nesse canal",
+		"invalid_message_id": "ID de mensagem inválida.\nPor favor, forneça o Id de uma mensagem enviada pelo bot no canal especificado",
+		"success": "Mensagem enviada com sucesso. Confira aqui: {{message}}",
+		"success_edit": "Mensagem editada com sucesso. Confira aqui: {{message}}",
+		"error": "Ocorreu um erro ao enviar a mensagem",
+		"embed": {
+			"modal_title": "Enviar mensagem embed",
+			"content": "Conteúdo",
+			"content_placeholder": "O Texto fora da embed (@menções só funcionam aqui)",
+			"title": "Título",
+			"title_placeholder": "Digite aqui o título",
+			"description": "Descrição",
+			"description_placeholder": "Digite aqui a descrição, o texto principal",
+			"footer": "Footer",
+			"footer_placeholder": "Texto menor abaixo da descrição",
+			"color": "Cor",
+			"color_placeholder": "Cor da barra lateral. Em hex (#000000)",
+			"invalid_color": "Cor inválida. Por favor, forneça uma cor em hex (#FFFFFF)",
+			"image": "Imagem",
+			"image_placeholder": "URL da imagem. Imagens animadas também são suportadas"
+		}
+	},
+	"deposit": {
+		"cmdName": "deposit",
+		"cmdDesc": "Deposita moedas no banco",
+		"notEnoughCoins": "Você não possui esse valor em {{coinEmoji}} {{coinName}} na carteira",
+		"success": "Depósito de {{amount}} {{coinEmoji}} {{coinName}} feito com sucesso",
+		"successTitle": "📥 Depósito efetuado com sucesso 📥",
+		"successDescription": "Você depositou {{amount}} {{coinEmoji}} {{coinName}} na sua carteira"
+	},
+	"saque": {
+		"cmdName": "saque",
+		"cmdDesc": "Saca moedas para a carteira",
+		"notEnoughCoins": "Você não possui esse valor em {{coinEmoji}} {{coinName}} no banco",
+		"success": "Saque de {{amount}} {{coinEmoji}} {{coinName}} feito com sucesso",
+		"successTitle": "📤 Saque efetuado com sucesso 📤",
+		"successDescription": "Você sacou {{amount}} {{coinEmoji}} {{coinName}} do banco"
+	},
+	"daily": {
+		"title": "🕒 Recompensa Diária",
+		"description": "Você recebeu **{{newCoins}} {{coinEmoji}} {{coinName}}** como recompensa diária.\nVocê possui um combo de **{{dailyCombo}} dias**. Continue assim!",
+		"alreadyClaimed": "Você já coletou sua recompensa diária hoje. Volte amanhã para mais!"
+	},
+	"rank": {
+		"title": {
+			"chatXP": "Ranking de XP por chat",
+			"voiceXP": "Ranking de XP por voz"
+		},
+		"pageNumber": "Página N° {{pageNumber}}"
+	},
+	"games": {
+		"cantPlayAgainstSelf": "Você não pode jogar contra você mesmo",
+		"cantPlayAgainstBot": "Você não pode jogar contra outros bots",
+		"notEnoughCoins": "Saldo em carteira insuficiente para essa aposta",
+		"notEnoughCoinsOpponent": "Seu oponente não tem saldo suficiente para essa aposta",
+		"turnOf": "Vez de <@{{playerId}}>",
+		"playAgain": "Jogar Novamente"
+	},
+	"ticTacToe": {
+		"cmdName": "velha",
+		"cmdDesc": "Jogue uma partida de jogo da velha",
+		"title": "❎ ⭕ | Jogo da Velha"
+	},
+	"numberGuess": {
+		"title": "🎲 Como jogar",
+		"description": "Tente adivinhar meu número **entre 1 e {{max}}**\ne eu falarei se o meu número é maior ou menor",
+		"lower": "🔽 menor",
+		"higher": "🔼 maior",
+		"win": "🎉 Parabéns! Você acertou!",
+		"attempts": "Você acertou em **{{attempts}}** tentativas"
+	}
+}
