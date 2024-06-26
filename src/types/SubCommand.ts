@@ -6,7 +6,7 @@ import {
 import { GuildModel, MemberModel } from 'db/entities';
 import { TFunction } from 'i18next';
 
-interface executeOptions {
+export interface SubCommandExecuteArgs {
 	client: Client;
 	interaction: ChatInputCommandInteraction;
 	memberModel: MemberModel;
@@ -14,7 +14,7 @@ interface executeOptions {
 	t: TFunction;
 }
 
-type executeFunction = (options: executeOptions) => any;
+type executeFunction = (options: SubCommandExecuteArgs) => any;
 
 export type SubCommandType = {
 	data: SlashCommandSubcommandBuilder;
