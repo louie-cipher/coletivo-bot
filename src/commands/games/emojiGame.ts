@@ -5,7 +5,6 @@ import {
 	User,
 	Colors,
 } from 'discord.js';
-import { MemberRepo } from 'db/repositories';
 import SlashCommand from 'classes/SlashCommand';
 
 const channelsPlaying = new Collection<string, boolean>();
@@ -15,7 +14,15 @@ const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 export default new SlashCommand({
 	data: new SlashCommandBuilder()
 		.setName('emoji-game')
-		.setDescription('um jogo de achar o emoji diferente'),
+		.setDescription('um jogo de achar o emoji diferente')
+		.addIntegerOption((option) =>
+			option
+				.setName('round-duration')
+				.setDescription('duração máxima de cada rodada')
+				.setRequired(false)
+				.setMinValue(15)
+				.setMaxValue(120),
+		),
 
 	execute: async ({ interaction }) => {
 		if (channelsPlaying.get(interaction.channelId) === true)
@@ -25,6 +32,9 @@ export default new SlashCommand({
 					'Não é possível jogar 2 partidas no mesmo chat simultaneamente.\nTente em outro canal, ou junte-se ao jogo atual ^-^',
 				ephemeral: true,
 			});
+
+		const roundDurationSec =
+			interaction.options.getInteger('round-duration', false) || 60;
 
 		await interaction.deferReply({ ephemeral: false });
 		channelsPlaying.set(interaction.channelId, true);
@@ -39,7 +49,7 @@ export default new SlashCommand({
 			.addFields([
 				{
 					name: 'Como jogar',
-					value: `Você tem 30 segundos para achar o emoji diferente dos demais\nEnvie as coordenadas do emoji que é diferente\nExemplo: "B3"`,
+					value: `Você tem ${roundDurationSec} segundos para achar o emoji diferente dos demais\nEnvie as coordenadas do emoji que é diferente\nExemplo: "B3"`,
 				},
 			]);
 
@@ -81,8 +91,11 @@ export default new SlashCommand({
 			},
 		};
 
-		let closeToEnd = setTimeout(timersManager.endingWarn, 20_000);
-		let endGame = setTimeout(timersManager.endGame, 30_000);
+		let closeToEnd = setTimeout(
+			timersManager.endingWarn,
+			(roundDurationSec - 10) * 1000,
+		);
+		let endGame = setTimeout(timersManager.endGame, roundDurationSec * 1000);
 
 		let processing = false;
 
@@ -133,8 +146,11 @@ export default new SlashCommand({
 			await message.channel.send({ embeds: [newEmbed] });
 			processing = false;
 
-			closeToEnd = setTimeout(timersManager.endingWarn, 20_000);
-			endGame = setTimeout(timersManager.endGame, 30_000);
+			closeToEnd = setTimeout(
+				timersManager.endingWarn,
+				(roundDurationSec - 10) * 1000,
+			);
+			endGame = setTimeout(timersManager.endGame, roundDurationSec * 1000);
 		}); // MessageCollector event end
 	},
 });
