@@ -16,6 +16,8 @@ export default new SubCommand({
 		try {
 			const messageId = interaction.options.getString('message-id');
 
+			const formTitle = interaction.options.getString('form-title');
+
 			const modChannel = interaction.options.getChannel('mod-channel');
 
 			const assignRole = interaction.options.getRole('assign-role', false);
@@ -69,6 +71,7 @@ export default new SubCommand({
 
 			const ticket = new Ticket();
 			ticket.messageId = messageId;
+			ticket.formTitle = formTitle;
 			ticket.modChannel = modChannel.id;
 			ticket.assignRole = assignRole?.id;
 			ticket.approvalChannel = approvedChannelId;
@@ -114,6 +117,13 @@ function Data() {
 			option
 				.setName('message-id')
 				.setDescription('Bot message to add the button')
+				.setRequired(true),
+		)
+		.addStringOption((option) =>
+			option
+				.setName('form-title')
+				.setDescription('Title of the form, above the questions')
+				.setMaxLength(45)
 				.setRequired(true),
 		)
 		.addChannelOption((option) =>

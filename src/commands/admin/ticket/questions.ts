@@ -13,29 +13,22 @@ export default new SubCommand({
 
 	async execute({ interaction, t }) {
 		const messageId = interaction.options.getString('message-id');
-		const formTitle = interaction.options.getString('form-title');
-
-		const ticketExists = await TicketRepo.existsBy({ messageId });
-
-		if (!ticketExists)
-			return interaction.reply({
-				content: t('ticket:questions.notFound', { messageId }),
-				ephemeral: true,
-			});
 
 		const ticket = await TicketRepo.findOne({
 			where: { messageId },
 			relations: ['questions'],
 		});
 
-		ticket.formTitle = formTitle;
-		await ticket.save();
+		if (!ticket)
+			return interaction.reply({
+				content: t('ticket:questions.notFound', { messageId }),
+				ephemeral: true,
+			});
 
 		const embed = new EmbedBuilder()
 			.setColor(Colors.Green)
 			.setTitle(t('ticket:questions.title'))
-			.setDescription(t('ticket:questions.description', { messageId }))
-			.addFields([{ name: 'Form Title', value: `"${formTitle}"` }]);
+			.setDescription(t('ticket:questions.description', { messageId }));
 
 		for (let i = 1; i <= 5; i++) {
 			const question = interaction.options.getString(`question-${i}`);
@@ -106,13 +99,6 @@ function Data() {
 			option
 				.setName('message-id')
 				.setDescription('Id of the ticket main message')
-				.setRequired(true),
-		)
-		.addStringOption((option) =>
-			option
-				.setName('form-title')
-				.setDescription('Title of the form, above the questions')
-				.setMaxLength(45)
 				.setRequired(true),
 		);
 
