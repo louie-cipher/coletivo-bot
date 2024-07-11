@@ -24,7 +24,10 @@ export async function TicketCreate(interaction: ButtonInteraction) {
 		});
 
 		if (!ticket || !ticket.questions || ticket.questions.length === 0)
-			return interaction.reply({ content: 'Ticket not configured' });
+			return interaction.reply({
+				content: 'Ticket not configured yet',
+				ephemeral: true,
+			});
 
 		const hasEntry = await TicketEntry.exists({
 			where: {
