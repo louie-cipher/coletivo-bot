@@ -100,7 +100,12 @@ async function RankPage({ client, rankList, type, pageNumber, t }: RankPageArgs)
 	membersPage.forEach(async (member, index) => {
 		let username = member.username;
 		try {
-			username = (await client.users.fetch(member.id)).username;
+			const usernameNew = (await client.users.fetch(member.id)).username;
+			if (usernameNew !== username) {
+				member.username = usernameNew;
+				await member.save();
+				username = usernameNew;
+			}
 		} catch (err) {}
 
 		const rankNum = startIndex + index + 1;
