@@ -36,7 +36,7 @@ export default new SubCommand({
 
 	async execute({ interaction, t }) {
 		const channel = interaction.channel;
-		const text = interaction.options.getString('message');
+		const text = interaction.options.getString('message').replaceAll('\\n', '\n');
 		const messageEditId = interaction.options.getString('message-edit-id');
 
 		if (messageEditId) {

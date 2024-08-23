@@ -75,7 +75,7 @@ export default new SubCommand({
 				min_length: 1,
 				max_length: 256,
 				style: TextInputStyle.Short,
-				required: true,
+				required: false,
 			}),
 			new TextInputBuilder({
 				custom_id: 'description',
@@ -124,15 +124,24 @@ export default new SubCommand({
 		const color = modalInteraction.fields.getTextInputValue('color');
 		const image = modalInteraction.fields.getTextInputValue('image');
 
-		const embed = new EmbedBuilder().setTitle(title);
+		let embed = new EmbedBuilder();
 
+		if (title) embed.setTitle(title);
 		if (description) embed.setDescription(description);
 		if (image) embed.setImage(image);
 		if (color && /^#([A-Fa-f0-9]{6})$/.test(color))
 			embed.setColor(color as ColorResolvable);
 
+		const embeds = title || description || image ? [embed] : [];
+
+		if (!content && !embeds.length)
+			return modalInteraction.reply({
+				content: t('send.empty'),
+				ephemeral: true,
+			});
+
 		if (message) {
-			message.edit({ embeds: [embed], content: content });
+			message.edit({ embeds, content: content });
 			return modalInteraction.reply({
 				content: t('send.success_edit').replace('{{message}}', message.url),
 				ephemeral: true,
@@ -140,7 +149,7 @@ export default new SubCommand({
 		}
 
 		channel
-			.send({ embeds: [embed], content: content })
+			.send({ embeds, content: content })
 			.then((msg) => {
 				modalInteraction.reply({
 					content: t('send.success').replace('{{message}}', msg.url),
