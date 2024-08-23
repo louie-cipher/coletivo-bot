@@ -6,7 +6,7 @@ export default class GlobalVars {
 	public static diceChannels: string = '';
 	public static coinEmoji: string = '';
 	public static coinName: string = '';
-	public static invisibleEmoji: string = '';
+	public static invisibleEmoji: string = '<:invisible:1275212139421892608>';
 	public static dailyCoins: number = 50;
 	public static chatXP: number = 1;
 	public static voiceXP: number = 1;

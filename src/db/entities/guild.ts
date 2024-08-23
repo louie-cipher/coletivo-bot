@@ -17,7 +17,7 @@ export class GuildModel extends BaseEntity {
 	@Column({ type: 'varchar', length: 32, nullable: true })
 	logChannel: string;
 
-	@Column({ type: 'varchar', length: 100, default: '<:invisible:>' })
+	@Column({ type: 'varchar', length: 100, default: '<:invisible:1275212139421892608>' })
 	invisibleEmoji: string;
 
 	@Column({ type: 'integer', default: 1 })
