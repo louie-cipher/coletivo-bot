@@ -11,7 +11,9 @@
 		"cmdDesc": "Send a message to a channel",
 		"invalid_channel": "Invalid channel. Please provide a valid channel ID or mention a channel",
 		"missing_permissions": "I don't have permission to send messages in that channel",
+		"invalid_message_id": "Invalid message ID. Please provide the ID of a message sent by the bot in the specified channel",
 		"success": "Message sent successfully. Check it out here: {{message}}",
+		"success_edit": "Message edited successfully. Check it out here: {{message}}",
 		"error": "An error occurred while sending the message",
 		"embed": {
 			"modal_title": "Send an embed",
