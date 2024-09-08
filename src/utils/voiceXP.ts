@@ -7,16 +7,22 @@ export default async function (guild: Guild) {
 		consoleLog('VOICE_XP', 'updating voice XP');
 	try {
 		const channels = guild.channels.cache.filter(
-			(ch) => ch.isVoiceBased() && validMembers(ch).size > 1,
+			(ch) => ch.isVoiceBased() && ch.members.some((mb) => !mb.user.bot),
 		);
 
 		for (const channel of channels.values()) {
-			const members = validMembers(channel as BaseGuildVoiceChannel);
+			const members = listeningMembers(
+				channel.members as Collection<string, GuildMember>,
+			);
 			if (!members || members.size < 2) continue;
 
 			for (const member of members.values()) {
 				const memberDB = await MemberRepo.findOrCreate(member.user);
-				memberDB.voiceXP += 1;
+
+				if (memberDB.voiceXP > 1000 || member.voice.mute)
+					memberDB.voiceXP += 1;
+				else memberDB.voiceXP += 2;
+				
 
 				await MemberRepo.save(memberDB);
 			}
@@ -26,9 +32,5 @@ export default async function (guild: Guild) {
 	}
 }
 
-const validMembers = (channel: BaseGuildVoiceChannel) =>
-	channel.members && channel.members.size > 0
-		? channel.members.filter(
-				(mb) => !mb.user.bot && !mb.voice.mute && !mb.voice.deaf,
-			)
-		: new Collection<string, GuildMember>();
+const listeningMembers = (members: Collection<string, GuildMember>) =>
+	members.filter((mb) => !mb.user.bot && !mb.voice.deaf);

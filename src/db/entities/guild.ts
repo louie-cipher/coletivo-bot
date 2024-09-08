@@ -23,7 +23,7 @@ export class GuildModel extends BaseEntity {
 	@Column({ type: 'integer', default: 1 })
 	voiceXP: number;
 
-	@Column({ type: 'integer', default: 300 }) // in seconds (5 minutes)
+	@Column({ type: 'integer', default: 600 }) // in seconds (10 minutes)
 	voiceXPInterval: number;
 
 	@Column({ type: 'integer', default: 1 })
