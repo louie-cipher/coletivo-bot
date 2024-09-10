@@ -16,6 +16,7 @@
 		"i18n": "dist/i18n"
 	},
 	"scripts": {
+		"production": "npm install && npm start",
 		"start": "npm run build && npm run node",
 		"node": "cross-env NODE_ENV=prod node dist/index.js",
 		"dev": "cross-env NODE_ENV=dev ts-node src/index.ts",

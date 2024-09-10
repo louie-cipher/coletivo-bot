@@ -28,11 +28,5 @@ jobs:
         cd ${{ secrets.APP_PATH }}
         git reset --hard
         git pull
-        npm install
-        npm run build
         ${{ secrets.PM2_PATH }} startOrRestart ecosystem.config.js
         ENDSSH
-    
-    - name: Finish SSH
-      run: |
-        rm -rf ~/.ssh
