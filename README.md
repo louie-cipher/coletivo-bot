@@ -1,29 +1,47 @@
 # Coletivo Bot
 
-## Features
+**Bot do [Coletivo Trans de Gamedevs 🏳️‍⚧️](https://discord.gg/EAuxvAZBKb)**
 
--   Welcome message
--   Ticket system
--   Mini-games
--   Economy system
+## Recursos
 
-## Setup your own
+-   Mensagens de boas-vindas
+-   Sistema de ticket por formulário
+-   Mini-games com sistema de moedas
+-   XP por chat e por voz
 
-### Creating a Discord Bot
+## Tecnologias
 
--   Go to the [Discord Developer Portal](https://discord.com/developers/applications)
--   Create a new application
--   Go to the bot tab and create a new bot
--   Copy the token and save it for later
--   Go to the OAuth2 tab
-    -   Scroll down to the **OAuth2 URL Generator**, and Select the `bot` and `applications.commands` scopes
-    -   Scroll down to the **Bot Permissions** and select the permissions you want the bot to have (or select administrator to give all permissions)
-    -   Copy the generated URL at the bottom and paste it in your browser
-    -   Add the bot to your server
+-   [Node.js](https://nodejs.org/en/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Discord.js](https://discord.js.org/)
+-   [TypeORM](https://typeorm.io/)
+-   [SQLite](https://www.sqlite.org/index.html)
 
-### Running the application
+---
 
--   install [Node.js](https://nodejs.org/en/) (version 20 or higher)
--   copy the `.env.example` file to `.env` and fill the values
--   run `npm install`
--   run `npm start`
+## Desenvolvimento
+
+**Sugestões e contribuições são bem-vindas!**<br>
+(e muito necessárias)
+
+### Requisitos:
+
+-   [Node.js](https://nodejs.org/en/)
+-   [Git](https://git-scm.com/)
+
+### Para começar a desenvolver, siga os passos abaixo:
+
+-   Clone o repositório com `git clone https://github.com/louie-cipher/coletivo-bot.git`
+-   Instale as dependências com `npm install`
+
+#### Executando o bot localmente
+
+-   Crie uma aplicação para testes em [Discord Developer Portal](https://discord.com/developers/applications)
+-   Na aba `Bot`, clique em `Add Bot`
+-   Na aba `OAuth2`, marque as permissões `applications.commands` e `bot`
+-   Em `BOT PERMISSIONS`, marque `Administrator`
+-   Utilize a URL gerada para adicionar o bot a um servidor de testes
+-   Copie o arquivo `.env.example` para `.env` e preencha as variáveis de ambiente
+    -   `BOT_TOKEN` - Token do bot
+    -   `GUILD_ID` - ID do servidor de testes
+-   Execute o bot com `npm run dev` ou `npm start`
