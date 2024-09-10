@@ -1,4 +1,4 @@
-import { BaseGuildVoiceChannel, Collection, Guild, GuildMember } from 'discord.js';
+import { Collection, Guild, GuildMember } from 'discord.js';
 import { consoleError, consoleLog } from './log';
 import { MemberRepo } from 'db/repositories';
 
@@ -7,22 +7,22 @@ export default async function (guild: Guild) {
 		consoleLog('VOICE_XP', 'updating voice XP');
 	try {
 		const channels = guild.channels.cache.filter(
-			(ch) => ch.isVoiceBased() && ch.members.some((mb) => !mb.user.bot),
+			(ch) =>
+				ch.isVoiceBased() &&
+				ch.members.some((mb) => !mb.user.bot) &&
+				ch.id !== guild.afkChannelId,
 		);
 
 		for (const channel of channels.values()) {
 			const members = listeningMembers(
 				channel.members as Collection<string, GuildMember>,
 			);
-			if (!members || members.size < 2) continue;
 
 			for (const member of members.values()) {
 				const memberDB = await MemberRepo.findOrCreate(member.user);
 
-				if (memberDB.voiceXP > 1000 || member.voice.mute)
-					memberDB.voiceXP += 1;
-				else memberDB.voiceXP += 2;
-				
+				if (memberDB.voiceXP < 800) memberDB.voiceXP++;
+				if (!member.voice.mute && members.size > 1) memberDB.voiceXP++;
 
 				await MemberRepo.save(memberDB);
 			}
