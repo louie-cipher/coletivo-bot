@@ -16,8 +16,6 @@ class MemberRepo extends Repository<MemberModel> {
 			newMember.username = user.username;
 			newMember.language = 'pt-BR';
 			newMember.id = user.id;
-			newMember.chatXP = 0;
-			newMember.voiceXP = 0;
 			newMember.wallet = 0;
 			newMember.bank = 0;
 			return await this.save(newMember);

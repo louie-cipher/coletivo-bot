@@ -5,7 +5,10 @@ import {
 	CreateDateColumn,
 	UpdateDateColumn,
 	BaseEntity,
+	OneToMany,
+	Relation,
 } from 'typeorm';
+import { XpModel } from './xp';
 
 @Entity({ name: 'member' })
 export class MemberModel extends BaseEntity {
@@ -18,11 +21,11 @@ export class MemberModel extends BaseEntity {
 	@Column({ type: 'varchar', length: 6 })
 	language: string;
 
-	@Column({ type: 'integer', default: 0 })
-	chatXP: number;
-
-	@Column({ type: 'integer', default: 0 })
-	voiceXP: number;
+	@OneToMany(() => XpModel, (xp) => xp.member, {
+		cascade: ['remove'],
+		onDelete: 'CASCADE',
+	})
+	xp: Relation<XpModel[]>;
 
 	@Column({ type: 'integer', default: 0 })
 	wallet: number;

@@ -1,6 +1,6 @@
 import { Collection, Guild, GuildMember } from 'discord.js';
 import { consoleError, consoleLog } from './log';
-import { MemberRepo } from 'db/repositories';
+import { MemberRepo, XpRepo } from 'db/repositories';
 
 export default async function (guild: Guild) {
 	if (process.env.NODE_ENV === 'debug')
@@ -19,12 +19,11 @@ export default async function (guild: Guild) {
 			);
 
 			for (const member of members.values()) {
-				const memberDB = await MemberRepo.findOrCreate(member.user);
+				await MemberRepo.findOrCreate(member.user);
+				const xpModel = await XpRepo.findOrCreateToday(member.user);
 
-				if (memberDB.voiceXP < 800) memberDB.voiceXP++;
-				if (!member.voice.mute && members.size > 1) memberDB.voiceXP++;
-
-				await MemberRepo.save(memberDB);
+				xpModel.voiceXP += 1;
+				await XpRepo.save(xpModel);
 			}
 		}
 	} catch (err) {

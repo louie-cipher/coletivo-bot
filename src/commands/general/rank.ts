@@ -65,14 +65,14 @@ export default new SlashCommand({
 		});
 	},
 });
-interface RankPageArgs {
+export interface RankPageArgs {
 	client: Client;
 	rankList: MemberModel[];
 	type: 'chatXP' | 'voiceXP';
 	pageNumber: number;
 	t: TFunction;
 }
-async function RankPage({ client, rankList, type, pageNumber, t }: RankPageArgs) {
+export async function RankPage({ client, rankList, type, pageNumber, t }: RankPageArgs) {
 	const embed = new EmbedBuilder()
 		.setColor(Colors.Aqua)
 		.setTitle(t(`rank.title.${type}`))
